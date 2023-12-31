@@ -62,7 +62,40 @@
                         <td>{{student.email}}</td>
                         <td>{{student.branch}}</td>
                         <td>{{student.gpa}}</td>
-                        <td>Actions</td>
+                        <td>
+                          <button type="button" class="btn btn-success me-1" href="{% url 'view_student' student.id %}" data-bs-target="model" data-bs-target="#myModel{{student.id}}">
+                            <i class="fa-solid fa-circle-info fa-lg"></i>
+                          </button>
+
+                          <!-- Modal Component -->
+                          <div class="modal" id="#myModel{{student.id}}" tabindex="-1" aria-labelledby="myModelLabel1" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">
+                                    Student : {{student.first_name}} {{student.last_name}}
+                                  </h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"></span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <ul class="list-unstyled">
+                                    <li>Student Number : <strong>{{student.std_num}}</strong></li>
+                                    <li>First Name : <strong>{{student.first_name}}</strong></li>
+                                    <li>Last Name : <strong>{{student.last_name}}</strong></li>
+                                    <li>Email : <strong>{{student.email}}</strong></li>
+                                    <li>Branch : <strong>{{student.branch}}</strong></li>
+                                    <li>GPA : <strong>{{student.gpa}}</strong></li>
+                                  </ul>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
                       </tr>
                       {% endfor %}
                     </tbody>
