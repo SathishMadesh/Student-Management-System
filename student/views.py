@@ -46,18 +46,26 @@ def add(request):
     })
 
 def edit(request, id):
+    student = Student.objects.get(id=id)
+
     if request.method == 'POST':
-        student = Student.objects.get(id=id)
-        form = StudentForm(instance=student)
+        form = StudentForm(request.POST,instance=student)
         if form.is_valid():
             form.save()
-            return render(request, 'student/edit.html',{
+            return render(request, 'students/edit.html',{
                 'form':form,
                 'success':True
             })
     else:
         student = Student.objects.get(id=id)
         form = StudentForm(instance=student)
-    return render(request, 'student/edit.html',{
+    return render(request, 'students/edit.html',{
         'form':form
     })
+
+def delete(request,id):
+    if request.method == 'POST':
+        student = Student.objects.get(id=id)
+        student.delete()
+    return HttpResponseRedirect(reverse('index'))
+
