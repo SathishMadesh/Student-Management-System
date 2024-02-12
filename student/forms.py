@@ -7,7 +7,7 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ['std_num','first_name','last_name','email','branch','gpa']
         labels = {
-            'std_num':'Student Name',
+            'std_num':'Student Number',
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'email': 'E-Mail',
